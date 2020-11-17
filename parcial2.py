@@ -22,7 +22,7 @@ def main(campos):
 
 def cargar_datos(campos):
 
-    nombre_archivo = input("Ingrese el nombre del archivo: ")
+    nombre_archivo = input("\nIngrese el nombre del archivo: ")
 
     lista_empleados = ingresar_empleado(campos)
 
@@ -33,9 +33,9 @@ def cargar_datos(campos):
             sobreescribir = input(f"\n El archivo {nombre_archivo} existe. Desea sobreescribir? si/no: ")
 
             if sobreescribir == "si":
-                modo_archivo = "a"
-            else:
                 modo_archivo = "w"
+            else:
+                modo_archivo = "a"
 
             with open(nombre_archivo, modo_archivo, newline="") as file:
                 planilla = csv.writer(file)
