@@ -113,13 +113,9 @@ def informar_gastos(campos):
             planilla_viaticos = csv.reader(file_viatico)
             next(planilla_viaticos)
 
-            #print(f"LEGAJO: {numero_legajo}")
             for linea in planilla_viaticos:
-                #print(f"LINEA[0]: {linea[0]}, NUMERO_LEGAJO: {numero_legajo}")
                 if int(linea[0]) == numero_legajo:
-                    #print("ENTRO AL IF.")
                     gastos = gastos + int(linea[1]) # ACUMULO LOS GASTOS
-            #print(f"NUMERO LEGAJO: {numero_legajo} GASTOS: {gastos}")
 
         with open(nombre_archivo_legajos, "r", newline="") as file_legajos:
 
@@ -127,15 +123,13 @@ def informar_gastos(campos):
             next(planilla_legajos)
 
             for legajo in planilla_legajos:
-                #print(legajo)
                 if int(legajo[0]) == numero_legajo:
                     empleado = legajo # GUARDO DATOS DEL EMPLEADO PARA LUEGO INFORMARLOS
-            #print(f"{empleado}")
 
         if gastos > presupuesto:
-            print(f"\nLegajo {empleado[0]} : {empleado[1]} {empleado[2]}, gastó ${gastos} y se ha pasado del presupuesto por ${gastos - presupuesto}")
+            print(f"\nLegajo {empleado[0]} : {empleado[2]} {empleado[1]}, gastó ${gastos} y se ha pasado del presupuesto por ${gastos - presupuesto}")
         else:
-            print(f"\nLegajo {empleado[0]} : {empleado[1]} {empleado[2]}, gastó ${gastos}")
+            print(f"\nLegajo {empleado[0]} : {empleado[2]} {empleado[1]}, gastó ${gastos}")
     except IOError:
         print("\nOcurrió un error con el archivo. Revise los nombres del archivos ingresados antes de continuar.")
 
